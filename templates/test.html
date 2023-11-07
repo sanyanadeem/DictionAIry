@@ -1,0 +1,47 @@
+<!doctype html>
+<head>
+    <title>🤖 DictionAIry - {{ word_info['word'] }}</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>{{ word_info['word'] }}</h1>
+    <p style="font-size: x-large"><i>{{ word_info['mw'] }}</i> &emsp; <audio controls><source src="{{ word_info['audio_url'] }}"/></audio></p>
+
+    {% if score_def is defined %}
+    <h3>📝 Test Results</h3>
+    <table>
+        <tr>
+            <th>🧠 Definition</th>
+            <th>🤖 Score</th>
+            <th>🤖 Feedback</th>
+            <th>🧠 Example</th>
+            <th>🤖 Score</th>
+            <th>🤖 Feedback</th>
+        </tr>
+        <tr>
+            <td>{{ user_def }}</td>
+            <td>{{ score_def }}</td>
+            <td>{{ reason_def }}</td>
+            <td>{{ user_ex }}</td>
+            <td>{{ score_ex }}</td>
+            <td>{{ reason_ex }}</td>
+        </tr>
+    </table>
+    <a href="/test/{{ word_info['word'] }}"><button>📝 Retake the test</button></a>
+    {% else %}
+    <h3>📝 Diction<span style="color: #30bbe6">AI</span>ry Test</h3>
+    <form action="/test/{{ word_info['word'] }}" method="post">
+        <label for="definition">✏️ Definition:</label>
+        <input type="text" id="definition" name="definition" style="width: 600px;">
+        <label for="example">✏️ Example:</label>
+        <input type="text" id="example" name="example" style="width: 600px;">
+        <br>
+        <input type="submit" value="📤 Submit">
+    </form>
+    {% endif %}
+    <p></p>
+    <a href="/learn/{{ word_info['word'] }}"><button>💡 Study this word</button></a>
+    <a href="/"><button>🏠 Home</button></a>
+</body>

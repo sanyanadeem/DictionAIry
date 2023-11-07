@@ -1,0 +1,38 @@
+<!doctype html>
+<head>
+    <title>🤖 DictionAIry - Custom Test</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>🤖 Diction<span style="color: #30bbe6">AI</span>ry</h1>
+    <h3>📝 Test Results - Final Score: {{ (final_score_def + final_score_ex)/2*100 }}%</h3>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>word</th>
+            <th>🧠 Definition</th>
+            <th>🤖 Score</th>
+            <th>🤖 Feedback</th>
+            <th>🧠 Example</th>
+            <th>🤖 Score</th>
+            <th>🤖 Feedback</th>
+        </tr>
+        {% for i in range(5) %}
+        <tr>
+            <td>{{ i+1 }}</td>
+            <td><a href="/learn/{{ test_words[i] }}">{{ test_words[i] }}</a></td>
+            <td>{{ user_defs[i] }}</td>
+            <td>{{ score_defs[i] }}</td>
+            <td>{{ reason_defs[i] }}</td>
+            <td>{{ user_exs[i] }}</td>
+            <td>{{ score_exs[i] }}</td>
+            <td>{{ reason_exs[i] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <a href="/"><button>🏠 Home</button></a>
+</body>
