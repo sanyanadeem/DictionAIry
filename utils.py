@@ -5,8 +5,7 @@ import requests
 import openai
 
 MW_API_KEY = ""
-OPENAI_ORG_ID = ""
-OPENAI_API_KEY = ""
+openai.api_key = ""
 
 def main():
     word_info = query_dictionary_mw("test")
